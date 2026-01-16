@@ -8,7 +8,7 @@ published in *Physics of the Dark Universe* (2024):
 This project explores a Unified Dark Energy (UDE) model based on a double polytropic fluid 
 inspired by the Murnaghan equation of state from solid-state physics. The code solves 
 the background cosmological evolution equations to test the model's viability against 
-$\Lambda$CDM and other dark energy paradigms.
+$\Lambda$ CDM and other dark energy paradigms.
 
 ## Key Computational Features
 * **Equation of State (EoS) Solver**: Implements the Murnaghan-inspired double polytropic fluid 
