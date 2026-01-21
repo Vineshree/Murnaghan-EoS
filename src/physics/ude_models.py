@@ -77,3 +77,32 @@ class MurnaghanModel:
         # s_M = (A / rho_M) * (rho_m / rho_pl)^-alpha
         # Note: In your text A = A_star * alpha
         return (self.alpha * self.A_star / self.epsilon_M(a)) * (rho / self.rho_star_ratio)**(-self.alpha)
+    def get_kinematics(self):
+        """Calculates q0 and j0 at a=1 (today)."""
+        # We use a small step in e-folds (N) for numerical differentiation
+        # N = ln(a), so today is N=0
+        dN = 0.0001
+        
+        def ln_H(N):
+            a = np.exp(N)
+            # H^2 proportional to rho_M
+            return 0.5 * np.log(self.epsilon_M(a))
+            
+        # First derivative: d(ln H)/dN
+        f_plus = ln_H(dN)
+        f_minus = ln_H(-dN)
+        f_prime = (f_plus - f_minus) / (2 * dN)
+        
+        # Second derivative: d^2(ln H)/dN^2
+        f_0 = ln_H(0)
+        f_double_prime = (f_plus - 2*f_0 + f_minus) / (dN**2)
+        
+        # Physics definitions from your text:
+        # q = -1 - d(ln H)/dN
+        q0 = -1 - f_prime
+        
+        # j = q(2q + 1) + dq/dN
+        # After some algebra, this relates to the second derivative:
+        j0 = f_double_prime + (f_prime)**2 + 3*f_prime + 1
+        
+        return q0, j0
