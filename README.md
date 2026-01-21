@@ -17,7 +17,13 @@ The Murnaghan EoS offers a unique approach to cosmic acceleration by representin
 * **Kinematic Analysis:** Functions to compute the current deceleration ($q_0$) and jerk ($j_0$) parameters.
 * **Unit Testing:** A `pytest` suite ensuring physical normalization ($\Omega_{tot}=1$) and stability constraints.
 
+  
+## Publication
+For the theoretical background and detailed derivation, please refer to the full paper:
+> Dunsby, P. K. S., Luongo, O., Muccino, M., & Pillay, V. (2024). 
+
 ## 📁 Repository Structure
+```text
 Murnaghan-EoS/
 ├── src/
 │   ├── physics/
@@ -28,9 +34,7 @@ Murnaghan-EoS/
 ├── Notebook_UDE_Comparison.ipynb # Main analysis and plotting
 └── README.md
 
-## Publication
-For the theoretical background and detailed derivation, please refer to the full paper:
-> Dunsby, P. K. S., Luongo, O., Muccino, M., & Pillay, V. (2024). 
+
 > *Double polytropic cosmic acceleration from the Murnaghan equation of state*. 
 > **Physics of the Dark Universe**, 46, 101563. 
 > [DOI: 10.1016/j.dark.2024.101563](https://doi.org/10.1016/j.dark.2024.101563)
