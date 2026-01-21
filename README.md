@@ -20,7 +20,11 @@ The Murnaghan EoS offers a unique approach to cosmic acceleration by representin
   
 ## Publication
 For the theoretical background and detailed derivation, please refer to the full paper:
-> Dunsby, P. K. S., Luongo, O., Muccino, M., & Pillay, V. (2024). 
+> Dunsby, P. K. S., Luongo, O., Muccino, M., & Pillay, V. (2024).
+> > *Double polytropic cosmic acceleration from the Murnaghan equation of state*. 
+> **Physics of the Dark Universe**, 46, 101563. 
+> [DOI: 10.1016/j.dark.2024.101563](https://doi.org/10.1016/j.dark.2024.101563)
+
 
 ## 📁 Repository Structure
 ```text
@@ -35,6 +39,3 @@ Murnaghan-EoS/
 └── README.md
 
 
-> *Double polytropic cosmic acceleration from the Murnaghan equation of state*. 
-> **Physics of the Dark Universe**, 46, 101563. 
-> [DOI: 10.1016/j.dark.2024.101563](https://doi.org/10.1016/j.dark.2024.101563)
