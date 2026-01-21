@@ -2,7 +2,7 @@
 
 Murnaghan-EoS: Unified Dark Fluid Cosmology
 
-This repository contains the numerical implementation and perturbation analysis of the **Murnaghan Equation of State (EoS)** as a Unified Dark Fluid (UDF) model. The project compares the Murnaghan model against standard $\Lambda$ CDM, Generalized Chaplygin Gas (GCG), and Logotropic models, specifically focusing on the growth of matter density perturbations.
+This repository contains the numerical implementation and perturbation analysis of the **Murnaghan Equation of State (EoS)** as a Unified Dark Fluid (UDF) model. The project compares the Murnaghan model against standard $\Lambda$ CDM, Generalized Chaplygin Gas (GCG), and Logotropic models, specifically focusing on the growth of matter density perturbations. This repository also contains the numerical analysis and MCMC pipelines for constraining the **Murnaghan Equation of State (EoS)** using late-time cosmological observations.
 
 ## Scientific Context
 The Murnaghan EoS offers a unique approach to cosmic acceleration by representing the entire dark sector (Dark Matter and Dark Energy) as a single perfect fluid. Unlike other UDE models, the Murnaghan formulation:
@@ -16,7 +16,9 @@ The Murnaghan EoS offers a unique approach to cosmic acceleration by representin
 * **Perturbation Solver:** Linear growth solver for the density contrast $\delta_m$ and the growth rate $f = d \ln \delta / d \ln a$.
 * **Kinematic Analysis:** Functions to compute the current deceleration ($q_0$) and jerk ($j_0$) parameters.
 * **Unit Testing:** A `pytest` suite ensuring physical normalization ($\Omega_{tot}=1$) and stability constraints.
-
+## 📊 Data Sets
+- **OHD (Cosmic Chronometers):** 32 data points measuring $H(z)$ through galaxy differential aging.
+- **Pantheon+:** Type Ia Supernovae data used to constrain the luminosity distance $d_L(z)$.
   
 ## Publication
 For the theoretical background and detailed derivation, please refer to the full paper:
