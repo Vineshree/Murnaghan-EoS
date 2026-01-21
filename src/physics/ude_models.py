@@ -1,1 +1,79 @@
+import numpy as np
 
+class GCGModel:
+    def __init__(self, h=0.6774, Omega_m=0.3089, alpha=0.2):
+        self.Omega_m = Omega_m
+        self.alpha = alpha
+        # As is usually tuned so that rho_ude(a=1) = 1 - Omega_m
+        self.As = 0.774 
+
+    def rho_ude(self, a):
+        term = self.As + (1 - self.As) * a**(-3 * (1 + self.alpha))
+        return term**(1 / (1 + self.alpha))
+
+    def w_ude(self, a):
+        return -self.As / (self.As + (1 - self.As) * a**(-3 * (1 + self.alpha)))
+
+    def cs2(self, a):
+        return -self.alpha * self.w_ude(a)
+
+class LogotropicModel:
+    def __init__(self, h=0.6774, Omega_m=0.3089, B=0.01):
+        self.Omega_m = Omega_m
+        self.B = B
+        self.Omega_de0 = 1.0 - Omega_m
+
+    def rho_ude(self, a):
+        return self.Omega_m * a**(-3) + self.Omega_de0 * (1 - 3 * self.B * np.log(a))
+
+    def w_ude(self, a):
+        rho = self.rho_ude(a)
+        p = -self.Omega_de0 * (1 + self.B - 3 * self.B * np.log(a))
+        return p / rho
+
+    def cs2(self, a):
+        # Based on your notebook: B / (rho/rho_crit - 1)
+        return self.B / (self.rho_ude(a) - 1 + 1e-10)
+    
+import numpy as np
+
+class MurnaghanModel:
+    def __init__(self, h=0.6774, Omega_m=0.3089, alpha=0.018):
+        self.h = h
+        self.Omega_m = Omega_m
+        self.alpha = alpha
+        self.rho_star_ratio = 1e120 # Normalized Planck density ratio
+        
+        # NORMALIZATION LOGIC:
+        # We solve for A_star such that total density today (a=1) is exactly 1.0
+        # epsilon_M(1) = Omega_m + A_star * [ (1/(1+alpha)) * (Omega_m/rho_star)^-alpha - 1 ] = 1
+        target_de = 1.0 - Omega_m
+        bracket = (1.0 / (1.0 + self.alpha)) * (self.Omega_m / self.rho_star_ratio)**(-self.alpha) - 1.0
+        
+        # This defines the attribute the functions are looking for!
+        self.A_star = target_de / bracket 
+
+    def rho_m(self, a):
+        return self.Omega_m * a**(-3)
+
+    def epsilon_M(self, a):
+        """Total Energy Density"""
+        rho = self.rho_m(a)
+        term = self.A_star * ((1/(1+self.alpha)) * (rho / self.rho_star_ratio)**(-self.alpha) - 1)
+        return rho + term
+
+    def p_murn(self, a):
+        """Pressure"""
+        rho = self.rho_m(a)
+        return -self.A_star * ((rho / self.rho_star_ratio)**(-self.alpha) - 1)
+
+    def w_ude(self, a):
+        """Equation of State"""
+        return self.p_murn(a) / self.epsilon_M(a)
+
+    def cs2(self, a):
+        """Sound Speed Squared"""
+        rho = self.rho_m(a)
+        # s_M = (A / rho_M) * (rho_m / rho_pl)^-alpha
+        # Note: In your text A = A_star * alpha
+        return (self.alpha * self.A_star / self.epsilon_M(a)) * (rho / self.rho_star_ratio)**(-self.alpha)
