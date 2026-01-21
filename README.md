@@ -1,10 +1,10 @@
 # Double Polytropic Cosmic Acceleration from the Murnaghan EoS
 
-T# Murnaghan-EoS: Unified Dark Fluid Cosmology
+Murnaghan-EoS: Unified Dark Fluid Cosmology
 
 This repository contains the numerical implementation and perturbation analysis of the **Murnaghan Equation of State (EoS)** as a Unified Dark Fluid (UDF) model. The project compares the Murnaghan model against standard $\Lambda$CDM, Generalized Chaplygin Gas (GCG), and Logotropic models, specifically focusing on the growth of matter density perturbations.
 
-## 🌌 Scientific Context
+## Scientific Context
 The Murnaghan EoS offers a unique approach to cosmic acceleration by representing the entire dark sector (Dark Matter and Dark Energy) as a single perfect fluid. Unlike other UDE models, the Murnaghan formulation:
 
 * **Dust-like Early Phase:** Recovers a pressureless dust phase ($w \approx 0$, $c_s^2 \approx 0$) at early times ($V \ll V_0$), which is a critical requirement for healthy structure formation.
@@ -18,7 +18,6 @@ The Murnaghan EoS offers a unique approach to cosmic acceleration by representin
 * **Unit Testing:** A `pytest` suite ensuring physical normalization ($\Omega_{tot}=1$) and stability constraints.
 
 ## 📁 Repository Structure
-```text
 Murnaghan-EoS/
 ├── src/
 │   ├── physics/
