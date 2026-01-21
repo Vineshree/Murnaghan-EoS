@@ -12,10 +12,11 @@ The Murnaghan EoS offers a unique approach to cosmic acceleration by representin
 * **Stability:** Maintains a positive-defined sound speed throughout cosmic evolution, avoiding the typical instabilities of unified models.
 
 ## 🛠 Features
-* **Physics Engine:** Implementation of background evolution ($H(z)$, $w(z)$) and sound speed ($c_s^2$) for multiple UDE models.
+* **Physics Engine:** Implementation of background evolution ($H(z)$, $ w(z) $) and sound speed ($c_s^2$) for multiple UDE models.
 * **Perturbation Solver:** Linear growth solver for the density contrast $\delta_m$ and the growth rate $f = d \ln \delta / d \ln a$.
 * **Kinematic Analysis:** Functions to compute the current deceleration ($q_0$) and jerk ($j_0$) parameters.
 * **Unit Testing:** A `pytest` suite ensuring physical normalization ($\Omega_{tot}=1$) and stability constraints.
+  
 ## 📊 Data Sets
 - **OHD (Cosmic Chronometers):** 32 data points measuring $H(z)$ through galaxy differential aging.
 - **Pantheon+:** Type Ia Supernovae data used to constrain the luminosity distance $d_L(z)$.
@@ -34,7 +35,7 @@ For the theoretical background and detailed derivation, please refer to the full
 - `src/visualization/`: Specialized plotting scripts for contours and expansion history.
 - `src/run_murnaghan_mcmc.py`: Main entry point for parameter estimation.
 - `tests/`: Unit tests to verify the Hubble parameter integration.
-- 
+  
 ## 📁 Repository Structure
 ```text
 Murnaghan-EoS
