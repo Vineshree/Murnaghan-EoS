@@ -2,7 +2,7 @@
 
 Murnaghan-EoS: Unified Dark Fluid Cosmology
 
-This repository contains the numerical implementation and perturbation analysis of the **Murnaghan Equation of State (EoS)** as a Unified Dark Fluid (UDF) model. The project compares the Murnaghan model against standard $\Lambda$CDM, Generalized Chaplygin Gas (GCG), and Logotropic models, specifically focusing on the growth of matter density perturbations.
+This repository contains the numerical implementation and perturbation analysis of the **Murnaghan Equation of State (EoS)** as a Unified Dark Fluid (UDF) model. The project compares the Murnaghan model against standard $\Lambda$ CDM, Generalized Chaplygin Gas (GCG), and Logotropic models, specifically focusing on the growth of matter density perturbations.
 
 ## Scientific Context
 The Murnaghan EoS offers a unique approach to cosmic acceleration by representing the entire dark sector (Dark Matter and Dark Energy) as a single perfect fluid. Unlike other UDE models, the Murnaghan formulation:
@@ -31,7 +31,7 @@ Murnaghan-EoS/
 │   │   └── cosmo_solver.py  # ODE solver for matter perturbations
 ├── tests/
 │   └── test_physics.py      # Physical sanity checks (Normalization, w-limit)
-├── Notebook_UDE_Comparison.ipynb # Main analysis and plotting
+├── UDE_comparison.ipynb # Main analysis and plotting
 └── README.md
 
 
