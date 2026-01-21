@@ -1,4 +1,5 @@
 import numpy as np
+from scipy.integrate import quad
 
 class GCGModel:
     def __init__(self, h=0.6774, Omega_m=0.3089, alpha=0.2):
@@ -35,8 +36,6 @@ class LogotropicModel:
         # Based on your notebook: B / (rho/rho_crit - 1)
         return self.B / (self.rho_ude(a) - 1 + 1e-10)
     
-import numpy as np
-
 class MurnaghanModel:
     def __init__(self, h=0.6774, Omega_m=0.3089, alpha=0.018):
         self.h = h
@@ -106,3 +105,18 @@ class MurnaghanModel:
         j0 = f_double_prime + (f_prime)**2 + 3*f_prime + 1
         
         return q0, j0
+    
+    def calculate_distance_modulus(self, z_array):
+        c = 299792.458 # Speed of light in km/s
+        mu_list = []
+    
+        for z in z_array:
+            # Integral of 1/E(z)
+            integral, _ = quad(lambda zp: 1.0 / self.E(zp), 0, z)
+            dL = (1 + z) * (c / self.H0) * integral
+        
+            # Convert dL from Mpc to pc (multiply by 10^6) for the log
+            mu = 5 * np.log10(dL * 1e6 / 10)
+            mu_list.append(mu)
+        
+        return np.array(mu_list)
