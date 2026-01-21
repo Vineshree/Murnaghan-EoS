@@ -27,17 +27,34 @@ For the theoretical background and detailed derivation, please refer to the full
 > **Physics of the Dark Universe**, 46, 101563. 
 > [DOI: 10.1016/j.dark.2024.101563](https://doi.org/10.1016/j.dark.2024.101563)
 
-
+## 📂 Project Structure
+- `data/`: Raw cosmological datasets.
+- `notebooks/`: Comparison of Murnaghan model vs UDE models.
+- `src/physics/`: Core numerical solvers and Murnaghan physics engine.
+- `src/visualization/`: Specialized plotting scripts for contours and expansion history.
+- `src/run_murnaghan_mcmc.py`: Main entry point for parameter estimation.
+- `tests/`: Unit tests to verify the Hubble parameter integration.
+- 
 ## 📁 Repository Structure
 ```text
-Murnaghan-EoS/
+Murnaghan-EoS
+├── data/
+│   ├── OHD_32.txt
+│   └── Pantheon+SH0ES.txt
+├── notebooks/
+│   ├── ude_comparisons.ipynb
+│   └── murnaghan_combined_samples.npy
 ├── src/
 │   ├── physics/
-│   │   ├── ude_models.py    # Core Murnaghan, GCG, and Logotropic classes
-│   │   └── cosmo_solver.py  # ODE solver for matter perturbations
+│   │   ├── __init__.py
+│   │   ├── cosmo_solver.py      # Contains MurnaghanCosmology class
+│   │   └── ude_models.py
+│   ├── visualization/
+│   │   ├── __init__.py
+│   │   └── cosmo_plots.py       # Functions for corner plots/H(z) plots
+│   ├── run_murnaghan_mcmc.py    # The main runner
+│   └── __init__.py
 ├── tests/
-│   └── test_physics.py      # Physical sanity checks (Normalization, w-limit)
-├── UDE_comparison.ipynb # Main analysis and plotting
-└── README.md
-
-
+│   └── test_physics.py
+├── README.md
+└── requirements.txt
